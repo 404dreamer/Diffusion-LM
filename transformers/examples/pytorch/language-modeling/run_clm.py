@@ -112,15 +112,15 @@ class ModelArguments:
         metadata={"help": "blcok or pad"},
     )
     roc_train: Optional[str] = field(
-        default='/juice/scr/xlisali/diffusion_lm/ROCstory',
+        default='./improved-diffusion/diffusion_lm/ROCstory',
         metadata={"help": "roc story path"},
     )
     wiki_train: Optional[str] = field(
-        default='/u/scr/xlisali/diffusion_lm/simple_wiki/data.v1.split/simple.training.txt',
+        default='./improved-diffusion/diffusion_lm/simple_wiki/data.v1.split/simple.training.txt',
         metadata={"help": "simple wiki path"},
     )
     e2e_train: Optional[str] = field(
-        default='/u/scr/xlisali/e2e_data',
+        default='./datasets/e2e_data',
         metadata={"help": "simple wiki path"},
     )
 

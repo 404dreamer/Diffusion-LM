@@ -22,7 +22,7 @@ from improved_diffusion.script_util import (
     add_dict_to_argparser,
     args_to_dict,
 )
-sys.path.insert(0, 'diffusion_lm/transformers/examples/pytorch/language-modeling')
+sys.path.insert(0, '../transformers/examples/pytorch/language-modeling')
 from custom_trainer import Classifier_GPT2, Classifier_Times, Classifier_POS, Classifier_Tree
 from infill_util import langevin_fn3, get_score, langevin_fn3_compose, langevin_fn1, langevin_fn4, langevin_fn_tree, langevin_fn_length
 from spacy.lang.en import English
@@ -313,9 +313,9 @@ def main():
                 # model_control = Classifier_Tree.from_pretrained(
                 #     'predictability/diff_models/e2e-tgt-tree_e=20_b=32_m=bert-base-uncased_'
                 #     'wikitext-103-raw-v1_101_wp_full_multi16_v2').cuda()
-                model_control = Classifier_Tree.from_pretrained(
-                    'predictability/diff_models/e2e-tgt-tree_e=20_b=32_m=bert-base-uncased_'
-                    'wikitext-103-raw-v1_101_wp_full_multi16_cat').cuda()
+		# print(os.getcwd())
+                print(os.getcwd());model_control = Classifier_Tree.from_pretrained(
+                    'classifier_models/e2e-tgt-tree_e=20_b=32_m=bert-base-uncased_wikitext-103-raw-v1_101_wp_None/').cuda()
 
                 # print(model_control)
 
@@ -751,7 +751,7 @@ def create_argparser():
 
 def eval(args):
     if args.modality == 'e2e-tgt':
-        model_name_path = "predictability/diff_models/e2e-tgt_e=15_b=20_m=gpt2_wikitext-103-raw-v1_101_None"
+        model_name_path = "../classifier_models/e2e-tgt_e=15_b=20_m=gpt2_wikitext-103-raw-v1_101_None"
 
         COMMAND = f"python scripts/ppl_under_ar.py " \
               f"--model_path {args.model_path} " \
